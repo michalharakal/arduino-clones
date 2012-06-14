@@ -18,3 +18,20 @@ wiga.build.f_cpu=16000000L
 wiga.build.core=arduino
 wiga.build.variant=standard
 
+
+##############################################################
+
+atmega32.name=minimegaboard
+atmega32.upload.protocol=stk500
+atmega32.upload.maximum_size=28336
+atmega32.upload.speed=19200
+atmega32.bootloader.low_fuses=0xff
+atmega32.bootloader.high_fuses=0xdd
+atmega32.bootloader.extended_fuses=0x00
+atmega32.bootloader.path=atmega8
+atmega32.bootloader.file=retrointerfacing_ATmegaBOOT_32.hex
+atmega32.bootloader.unlock_bits=0x3F
+atmega32.bootloader.lock_bits=0x0F
+atmega32.build.mcu=atmega32
+atmega32.build.f_cpu=16000000L
+atmega32.build.core=arduino
