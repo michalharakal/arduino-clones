@@ -26,7 +26,6 @@ atmega32.upload.maximum_size=28336
 atmega32.upload.speed=19200
 atmega32.bootloader.low_fuses=0xff
 atmega32.bootloader.high_fuses=0xdd
-atmega32.bootloader.extended_fuses=0x00
 atmega32.bootloader.path=atmega8
 atmega32.bootloader.file=retrointerfacing_ATmegaBOOT_32.hex
 atmega32.bootloader.unlock_bits=0x3F
