@@ -205,7 +205,7 @@ asm("  .section .version\n"
 #define WATCHDOG_500MS  (_BV(WDP2) | _BV(WDP0) | _BV(WDE))
 #define WATCHDOG_1S     (_BV(WDP2) | _BV(WDP1) | _BV(WDE))
 #define WATCHDOG_2S     (_BV(WDP2) | _BV(WDP1) | _BV(WDP0) | _BV(WDE))
-#ifndef __AVR_ATmega32__
+#ifndef __AVR_ATmega8__
 #define WATCHDOG_4S     (_BV(WDP3) | _BV(WDE))
 #define WATCHDOG_8S     (_BV(WDP3) | _BV(WDP0) | _BV(WDE))
 #endif
@@ -243,7 +243,7 @@ void appStart() __attribute__ ((naked));
 #elif defined(__AVR_ATmega1280__)
 #define RAMSTART (0x200)
 #define NRWWSTART (0xE000)
-#elif defined(__AVR_ATmega8__) || defined(__AVR_ATmega88__) || defined(__AVR_ATmega32__)
+#elif defined(__AVR_ATmega8__) || defined(__AVR_ATmega32__) || defined(__AVR_ATmega88__)
 #define RAMSTART (0x100)
 #define NRWWSTART (0x1800)
 #endif
@@ -280,7 +280,7 @@ int main(void) {
   // If not, uncomment the following instructions:
   // cli();
   asm volatile ("clr __zero_reg__");
-#ifdef __AVR_ATmega32__
+#ifdef __AVR_ATmega8__
   SP=RAMEND;  // This is done by hardware reset
 #endif
 
@@ -294,7 +294,7 @@ int main(void) {
   TCCR1B = _BV(CS12) | _BV(CS10); // div 1024
 #endif
 #ifndef SOFT_UART
-#ifdef __AVR_ATmega32__
+#if defined(__AVR_ATmega8__) || defined(__AVR_ATmega32__)
   UCSRA = _BV(U2X); //Double speed mode USART
   UCSRB = _BV(RXEN) | _BV(TXEN);  // enable Rx & Tx
   UCSRC = _BV(URSEL) | _BV(UCSZ1) | _BV(UCSZ0);  // config USART; 8N1
@@ -534,7 +534,7 @@ uint8_t getch(void) {
   uint8_t ch;
 
 #ifdef LED_DATA_FLASH
-#ifdef __AVR_ATmega32__
+#ifdef __AVR_ATmega8__
   LED_PORT ^= _BV(LED);
 #else
   LED_PIN |= _BV(LED);
@@ -584,7 +584,7 @@ uint8_t getch(void) {
 #endif
 
 #ifdef LED_DATA_FLASH
-#ifdef __AVR_ATmega32__
+#ifdef __AVR_ATmega8__
   LED_PORT ^= _BV(LED);
 #else
   LED_PIN |= _BV(LED);
@@ -633,7 +633,7 @@ void flash_led(uint8_t count) {
     TCNT1 = -(F_CPU/(1024*16));
     TIFR1 = _BV(TOV1);
     while(!(TIFR1 & _BV(TOV1)));
-#ifdef __AVR_ATmega32__
+#ifdef __AVR_ATmega8__
     LED_PORT ^= _BV(LED);
 #else
     LED_PIN |= _BV(LED);
@@ -652,7 +652,7 @@ void watchdogReset() {
 
 void watchdogConfig(uint8_t x) {
 //  WDTCSR = _BV(WDCE) | _BV(WDE);
-//  WDTCSR = x;
+ // WDTCSR = x;
 }
 
 void appStart() {
