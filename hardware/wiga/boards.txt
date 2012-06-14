@@ -8,7 +8,6 @@ wiga.upload.maximum_size=32256
 wiga.upload.speed=115200
 wiga.bootloader.low_fuses=0xff
 wiga.bootloader.high_fuses=0xd9
-wiga.bootloader.extended_fuses=0x05
 wiga.bootloader.path=optiboot
 wiga.bootloader.file=optiboot_atmega32.hex
 wiga.bootloader.unlock_bits=0x3F
