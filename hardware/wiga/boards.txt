@@ -2,34 +2,18 @@
 
 ##############################################################
 
-wiga.name=Wiga
+wiga.name=Wiga 2012
 wiga.upload.protocol=arduino
 wiga.upload.maximum_size=32256
-wiga.upload.speed=115200
+wiga.upload.speed=19200
 wiga.bootloader.low_fuses=0xff
 wiga.bootloader.high_fuses=0xd9
-wiga.bootloader.path=optiboot
-wiga.bootloader.file=optiboot_atmega32.hex
+wiga.bootloader.path=atmegaboot32
+wiga.bootloader.file=ATmegaBOOT_168_atmega32.hex
 wiga.bootloader.unlock_bits=0x3F
 wiga.bootloader.lock_bits=0x0F
-wiga.build.mcu=atmega328p
-wiga.build.f_cpu=16000000L
+wiga.build.mcu=atmega32
+wiga.build.f_cpu=14745600L
 wiga.build.core=arduino
 wiga.build.variant=standard
 
-
-##############################################################
-
-atmega32.name=minimegaboard
-atmega32.upload.protocol=stk500
-atmega32.upload.maximum_size=28336
-atmega32.upload.speed=19200
-atmega32.bootloader.low_fuses=0xff
-atmega32.bootloader.high_fuses=0xdd
-atmega32.bootloader.path=atmega8
-atmega32.bootloader.file=retrointerfacing_ATmegaBOOT_32.hex
-atmega32.bootloader.unlock_bits=0x3F
-atmega32.bootloader.lock_bits=0x0F
-atmega32.build.mcu=atmega32
-atmega32.build.f_cpu=16000000L
-atmega32.build.core=arduino
